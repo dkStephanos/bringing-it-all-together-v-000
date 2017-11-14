@@ -5,10 +5,14 @@ class Dog
 
   attr_accessor :id, :name, :breed
 
-  def initialize({:id, :name, :breed})
-    @name = name
-    @breed = breed
-    @id = id
+  def initialize(attributes)
+    @name = attributes[1]
+    @breed = attributes[2]
+    if attributes[0]
+      @id = attributes
+    else
+      @id = nil
+    end
   end
 
   def self.new_from_db(row)
