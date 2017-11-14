@@ -73,7 +73,7 @@ class Dog
 
     DB[:conn].execute(sql, attributes[:name], attributes[:breed]).collect do |row|
       #binding.pry
-      Dog.new_from_db(row)
+      Dog.create(row)
     end.first
   end
 
