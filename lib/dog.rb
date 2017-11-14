@@ -73,7 +73,7 @@ class Dog
 
     dog_data = DB[:conn].execute(sql, attributes[:name], attributes[:breed]).flatten
     dog = Dog.new_from_db(dog_data)
-    binding.pry
+    #binding.pry
 
     if dog.id
       Dog.find_by_id(dog.id)
