@@ -72,9 +72,14 @@ class Dog
     SQL
 
     DB[:conn].execute(sql, attributes[:name], attributes[:breed]).collect do |row|
-      #binding.pry
-      Dog.create(row)
+      dog = Dog.new_from_db(row)
     end.first
+
+    if dog.id
+      Dog.find_by_id(dog.id)
+    else
+      dog.save
+    end
   end
 
   def self.create(attributes)
