@@ -16,7 +16,11 @@ class Dog
   end
 
   def self.new_from_db(row)
-    Dog.new(row[1], row[2], row[0])
+    attributes = {}
+    attributes[:id] = row[0]
+    attributes[:name] = row[1]
+    attributes[:breed] = row[2]
+    Dog.new(attributes)
   end
 
   def self.all
