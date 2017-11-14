@@ -71,9 +71,8 @@ class Dog
       LIMIT 1
     SQL
 
-    dog = DB[:conn].execute(sql, attributes[:name], attributes[:breed]).collect do |row|
-      Dog.new_from_db(row)
-    end.first
+    dog_data = DB[:conn].execute(sql, attributes[:name], attributes[:breed])
+    Dog.new_from_db(dog_data)
 
     if dog.id
       Dog.find_by_id(dog.id)
