@@ -6,7 +6,7 @@ class Dog
   attr_accessor :id, :name, :breed
 
   def initialize(attributes)
-    @name = attributes[1]
+    @name = attributes.name
     @breed = attributes[2]
     if attributes[0]
       @id = attributes
