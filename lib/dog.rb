@@ -72,7 +72,7 @@ class Dog
     SQL
 
     dog_data = DB[:conn].execute(sql, attributes[:name], attributes[:breed])
-    Dog.new_from_db(dog_data)
+    dog = Dog.new_from_db(dog_data)
 
     if dog.id
       Dog.find_by_id(dog.id)
