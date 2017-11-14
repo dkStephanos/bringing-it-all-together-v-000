@@ -62,7 +62,7 @@ class Dog
     end.first
   end
 
-  def self.find_or_create_by(name, breed)
+  def self.find_or_create_by(attributes)
     sql = <<-SQL
       SELECT *
       FROM dogs
@@ -70,7 +70,7 @@ class Dog
       LIMIT 1
     SQL
 
-    DB[:conn].execute(sql, name, breed).collect do |row|
+    DB[:conn].execute(sql, attributes[:name], attributes[:breed]).collect do |row|
       #binding.pry
       Dog.new_from_db(row)
     end.first
